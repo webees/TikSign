@@ -22,6 +22,8 @@ const PORT = process.env.PORT || 8080;
     //   });
     // }, 1 * 60 * 60 * 1000);
 
+    signer.init();
+
     server.on("request", (request, response) => {
       response.setHeader("Access-Control-Allow-Origin", "*");
       response.setHeader("Access-Control-Allow-Headers", "*");
@@ -42,8 +44,6 @@ const PORT = process.env.PORT || 8080;
           console.log("Received url: " + url);
 
           try {
-            signer.userAgent = request.headers["user-agent"];
-            signer.init();
             const sign = await signer.sign(url);
             const navigator = await signer.navigator();
 
@@ -59,14 +59,12 @@ const PORT = process.env.PORT || 8080;
             console.log(output);
           } catch (err) {
             console.log(err);
-            response.statusCode = 404;
-            response.end();
             // Uncomment if you want to auto-exit this application when an error thrown
             // If you use PM2 or Supervisord, it will attempt to open it
             // var timeElapsed = new Date() - start;
             // console.info("Execution time: %dms", timeElapsed);
             // if (timeElapsed > 2500) {
-            //  process.exit(1);
+            //   process.exit(1);
             // }
           }
         });
