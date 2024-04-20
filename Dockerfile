@@ -1,5 +1,5 @@
 #tiktok-signature
-FROM ubuntu:bionic AS tiktok_signature.build
+FROM ubuntu:22 AS tiktok_signature.build
 
 WORKDIR /usr
 
