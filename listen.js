@@ -3,7 +3,7 @@ const http = require("http");
 const PORT = process.env.PORT || 8080;
 (async function main() {
   try {
-    const signer = new Signer("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edge/107.0.1418.56");
+    const signer = new Signer();
     const start = new Date();
 
     const server = http
@@ -22,6 +22,7 @@ const PORT = process.env.PORT || 8080;
     //   });
     // }, 1 * 60 * 60 * 1000);
 
+    signer.userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edge/107.0.1418.56"
     signer.init();
 
     server.on("request", (request, response) => {
