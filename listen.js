@@ -22,8 +22,6 @@ const PORT = process.env.PORT || 8080;
     //   });
     // }, 1 * 60 * 60 * 1000);
 
-    signer.init();
-
     server.on("request", (request, response) => {
       response.setHeader("Access-Control-Allow-Origin", "*");
       response.setHeader("Access-Control-Allow-Headers", "*");
@@ -44,7 +42,8 @@ const PORT = process.env.PORT || 8080;
           console.log("Received url: " + url);
 
           try {
-            signer.userAgent = request.headers["user-agent"]
+            signer.userAgent = request.headers["user-agent"];
+            signer.init();
             const sign = await signer.sign(url);
             const navigator = await signer.navigator();
 
