@@ -1,11 +1,11 @@
 #tiktok-signature
-FROM ubuntu:latest AS tiktok_signature.build
+FROM ubuntu:bionic AS tiktok_signature.build
 
 WORKDIR /usr
 
 # 1. Install node20
 RUN apt-get update && apt-get install -y curl && \
-    curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g pm2
 
