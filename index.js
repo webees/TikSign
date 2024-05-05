@@ -13,7 +13,7 @@ class Signer {
     "--start-maximized",
   ];
   // Default TikTok loading page
-  default_url = "https://www.tiktok.com/@rihanna?lang=en";
+  default_url = "https://www.tiktok.com?lang=en";
 
   // Password for xttparams AES encryption
   password = "webapp1.0+202106";
